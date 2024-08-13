@@ -24,3 +24,8 @@ PhoneNotExistException = HTTPException(
     status_code=404,
     detail='Телефон не найден'
 )
+
+AddressIncorrectException = HTTPException(
+    status_code=400,
+    detail='Адрес указан не верно'
+)
