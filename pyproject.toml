@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "test-task"
+version = "0.1.0"
+description = "Тестовые задания"
+authors = ["molodost-vnutri <90547216+molodost-vnutri@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.112.0"
+SQLAlchemy = "^2.0.32"
+pydantic-settings = "^2.4.0"
+uvicorn = "^0.30.5"
+redis = "^5.0.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

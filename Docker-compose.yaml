@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: python -m poetry run uvicorn source.main:application --host 0.0.0.0 --port 8000
+    volumes:
+      - .:/src
+    ports:
+      - 8000:8000
+    depends_on:
+      - redis
+    environment:
+      - redis_url=redis
+      - redis_port=6379
+      - redis_password=secret
+    networks:
+      - service
+  
+  redis:
+    image: redis:alpine3.20
+    container_name: redis_container
+    expose:
+      - "6379"
+    ports:
+      - 6379:6379
+    environment:
+      - REDIS_PASSWORD=secret
+    command: ["redis-server", "--requirepass", "secret"]
+    networks:
+      - service
+
+networks:
+  service:
+    driver: bridge
